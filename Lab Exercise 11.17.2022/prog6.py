@@ -22,6 +22,13 @@ _thread.start_new_thread(button_reader_thread, ())
 
 
 while True:
+    led_green.value(1)
+    utime.sleep(5)
+    led_green.value(0)
+    led_amber.value(1)
+    utime.sleep(2)
+    led_amber.value(0)
+    
     if button_pressed == True:
         led_red.value(1)
         for i in range(10):
@@ -29,18 +36,12 @@ while True:
             utime.sleep(0.2)
             buzzer.value(0)
             utime.sleep(0.2)
+        led_red.value(0)
         global button_pressed
         button_pressed = False
+    else:
+        led_red.value(1)
+        utime.sleep(5)
+        led_red.value(0)
+    
 
-    led_red.value(1)
-    utime.sleep(5)
-    led_amber.value(1)
-    utime.sleep(2)
-    led_red.value(0)
-    led_amber.value(0)
-    led_green.value(1)
-    utime.sleep(5)
-    led_green.value(0)
-    led_amber.value(1)
-    utime.sleep(5)
-    led_amber.value(0)
